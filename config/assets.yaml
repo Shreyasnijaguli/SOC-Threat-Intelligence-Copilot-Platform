@@ -1,0 +1,32 @@
+# Maps a scanned host/asset to its business criticality, ticket owner, and team.
+# `host` values here must match the `host` field parsers emit in ingest/*_parser.py
+# (container name or resolved IP — keep this in sync with scripts/setup_target.sh).
+#
+# `owner`/`team` are free-text display labels shown in the dashboard and ticket
+# body — they never have to be real accounts. `github_username`, if set, is
+# what actually gets used as the GitHub Issue's Assignee (ticket/github_issues.py) —
+# it must be a real GitHub login with at least read access to this repo, or
+# GitHub rejects it outright (a 422 on issue creation/edit — it does NOT
+# silently drop an invalid assignee).
+assets:
+  juice-shop:
+    criticality: high
+    owner: "@Vishal-V2"
+    team: "AppSec"
+    github_username: "Vishal-V2"
+  localhost:
+    criticality: high
+    owner: "@Vishal-V2"
+    team: "AppSec"
+    github_username: "Vishal-V2"
+  metasploitable:
+    criticality: medium
+    owner: "@Vishal-V2"
+    team: "NetSec"
+    github_username: "Vishal-V2"
+
+default:
+  criticality: unknown
+  owner: "@Vishal-V2"
+  team: "Unassigned"
+  github_username: "Vishal-V2"
